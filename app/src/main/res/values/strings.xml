@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">MakanMen</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="maulana2ahmad_gmail_com">maulana2ahmad@gmail.com</string>
+    <string name="email">Email :</string>
+    <string name="maulana_ahmad_s">Maulana Ahmad S</string>
+    <string name="name">Name :</string>
+</resources>
