@@ -9,14 +9,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.redudant.makanmen.R;
 import com.redudant.makanmen.adapter.ListMakananBetawiAdapter;
-import com.redudant.makanmen.fragment.ProfileFragment;
 import com.redudant.makanmen.model.MenuMakanan;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         rvMakananBetawi.setHasFixedSize(true);
 
         listMakananBetawi.addAll(MakananBetawi.getListmakanan());
+
         showRecyclerViewLit();
 
     }
@@ -42,6 +42,14 @@ public class MainActivity extends AppCompatActivity {
         rvMakananBetawi.setLayoutManager(new LinearLayoutManager(MainActivity.this));
         ListMakananBetawiAdapter listMakananBetawiAdapter = new ListMakananBetawiAdapter(listMakananBetawi);
         rvMakananBetawi.setAdapter(listMakananBetawiAdapter);
+
+        listMakananBetawiAdapter.setOnItemClickCallback(new ListMakananBetawiAdapter.OnItemClickCallback() {
+            @Override
+            public void onItemCallbacked(MenuMakanan menuMakanan) {
+                showSelectedMakananBetawi(menuMakanan);
+            }
+        });
+
     }
 
     //get layout menu
@@ -63,14 +71,18 @@ public class MainActivity extends AppCompatActivity {
         switch (itemId)
         {
             case R.id.prifile:
-                getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.frame, new ProfileFragment())
-                        .addToBackStack(null)
-                        .commit();
-
+                startActivity(new Intent(MainActivity.this, ProfileActivity.class));
                 break;
         }
+    }
+
+    private void showSelectedMakananBetawi(MenuMakanan menuMakanan) {
+
+
+        Toast.makeText(this, "Kamu memilih " + menuMakanan.getTitle(), Toast.LENGTH_SHORT).show();
+
+        Intent intent = new Intent(getApplicationContext(), DetileMakananActivity.class);
+        startActivity(intent);
     }
 
 }

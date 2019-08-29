@@ -24,6 +24,12 @@ public class ListMakananBetawiAdapter extends RecyclerView.Adapter<ListMakananBe
         this.listMenuMakananBetawi = listMenuMakananBetawi;
     }
 
+    //start item onClick 2
+    private OnItemClickCallback onItemClickCallback;
+
+    public void setOnItemClickCallback(OnItemClickCallback onItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback;
+    }
 
     @NonNull
     @Override
@@ -34,9 +40,9 @@ public class ListMakananBetawiAdapter extends RecyclerView.Adapter<ListMakananBe
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ListMenuMakananBetawiViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final ListMenuMakananBetawiViewHolder holder, int position) {
 
-        MenuMakanan menuMakanan = listMenuMakananBetawi.get(position);
+        final MenuMakanan menuMakanan = listMenuMakananBetawi.get(position);
 
         Glide.with(holder.itemView.getContext())
                 .load(menuMakanan.getPhoto())
@@ -45,6 +51,14 @@ public class ListMakananBetawiAdapter extends RecyclerView.Adapter<ListMakananBe
 
         holder.tvTitle.setText(menuMakanan.getTitle());
         holder.tvSubmenu.setText(menuMakanan.getSubtitle());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onItemClickCallback.onItemCallbacked(listMenuMakananBetawi.get(holder.getAdapterPosition()));
+
+            }
+        });
 
     }
 
@@ -65,5 +79,10 @@ public class ListMakananBetawiAdapter extends RecyclerView.Adapter<ListMakananBe
             tvTitle = itemView.findViewById(R.id.tv_title);
             tvSubmenu = itemView.findViewById(R.id.tv_submenu);
         }
+    }
+
+    public interface OnItemClickCallback {
+
+        void onItemCallbacked(MenuMakanan menuMakanan);
     }
 }

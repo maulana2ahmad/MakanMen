@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center_horizontal"
-    android:background="@color/colorPrimary"
-    tools:context=".fragment.ProfileFragment">
+    tools:context=".view.ProfileActivity">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/iv_profile"
