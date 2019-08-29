@@ -4,10 +4,10 @@
 
     <group android:checkableBehavior="single">
 
-        <item android:id="@+id/prifile"
-            android:title="Profile"
+        <item
+            android:id="@+id/prifile"
             android:icon="@drawable/ic_account"
-            app:showAsAction="always"/>
-
+            android:title="Profile"
+            app:showAsAction="always" />
     </group>
 </menu>
