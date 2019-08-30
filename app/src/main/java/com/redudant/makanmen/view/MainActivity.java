@@ -9,8 +9,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.redudant.makanmen.R;
 import com.redudant.makanmen.adapter.ListMakananBetawiAdapter;
 import com.redudant.makanmen.model.MenuMakanan;
@@ -46,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         listMakananBetawiAdapter.setOnItemClickCallback(new ListMakananBetawiAdapter.OnItemClickCallback() {
             @Override
             public void onItemCallbacked(MenuMakanan menuMakanan) {
+
                 showSelectedMakananBetawi(menuMakanan);
             }
         });
@@ -78,10 +81,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void showSelectedMakananBetawi(MenuMakanan menuMakanan) {
 
-
         Toast.makeText(this, "Kamu memilih " + menuMakanan.getTitle(), Toast.LENGTH_SHORT).show();
 
         Intent intent = new Intent(getApplicationContext(), DetileMakananActivity.class);
+        intent.putExtra("image_url", menuMakanan.getPhoto());
+        intent.putExtra("title", menuMakanan.getTitle());
+        intent.putExtra("subtitle", menuMakanan.getSubtitle());
+        intent.putExtra("description", menuMakanan.getDesription());
         startActivity(intent);
     }
 

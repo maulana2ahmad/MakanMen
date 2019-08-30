@@ -1,5 +1,6 @@
 package com.redudant.makanmen.adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,6 +57,7 @@ public class ListMakananBetawiAdapter extends RecyclerView.Adapter<ListMakananBe
             @Override
             public void onClick(View view) {
                 onItemClickCallback.onItemCallbacked(listMenuMakananBetawi.get(holder.getAdapterPosition()));
+
 
             }
         });
