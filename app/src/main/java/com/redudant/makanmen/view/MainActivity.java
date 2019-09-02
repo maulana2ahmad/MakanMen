@@ -9,10 +9,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
-import com.google.android.material.snackbar.Snackbar;
 import com.redudant.makanmen.R;
 import com.redudant.makanmen.adapter.ListMakananBetawiAdapter;
 import com.redudant.makanmen.model.MenuMakanan;
@@ -23,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView rvMakananBetawi;
     private ArrayList<MenuMakanan> listMakananBetawi = new ArrayList<>();
+
+    private String title = "List Daftar Menu";
 
 
     @Override
@@ -37,6 +37,16 @@ public class MainActivity extends AppCompatActivity {
 
         showRecyclerViewLit();
 
+        setActionbarTile(title);
+
+    }
+
+    private void setActionbarTile(String title){
+
+        if (getSupportActionBar() != null)
+        {
+            getSupportActionBar().setTitle(title);
+        }
     }
 
     private void showRecyclerViewLit() {

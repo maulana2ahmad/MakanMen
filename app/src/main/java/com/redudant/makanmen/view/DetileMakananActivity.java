@@ -8,6 +8,7 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.redudant.makanmen.R;
 import com.redudant.makanmen.model.MenuMakanan;
 
@@ -30,14 +31,22 @@ public class DetileMakananActivity extends AppCompatActivity {
         tv_submenu = (TextView) findViewById(R.id.tv_submenu);
         tv_description = (TextView) findViewById(R.id.tv_description);
 
-
         if (getIntent().hasExtra("image_url") && getIntent().hasExtra("title")
-                && getIntent().hasExtra("subtitle") && getIntent().hasExtra("description")) {
+                && getIntent().hasExtra("subtitle") && getIntent().hasExtra("description")
+                && getIntent().hasExtra("supportActionBar")) {
             String imageCover = getIntent().getStringExtra("image_url");
             String titleDesc = getIntent().getStringExtra("title");
             String subtitileDesc = getIntent().getStringExtra("subtitle");
             String descriptionDesc = getIntent().getStringExtra("description");
 
+            Glide.with(this)
+                    .asBitmap()
+                    .load(imageCover)
+                    .into(ivImageCover);
+
+            tv_title.setText(titleDesc);
+            tv_submenu.setText(subtitileDesc);
+            tv_description.setText(descriptionDesc);
 
         }
 
