@@ -92,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
     private void showSelectedMakananBetawi(MenuMakanan menuMakanan) {
 
         Toast.makeText(this, "Kamu memilih " + menuMakanan.getTitle(), Toast.LENGTH_SHORT).show();
+        //getSupportActionBar().setTitle(menuMakanan.getTitle());
 
         Intent intent = new Intent(getApplicationContext(), DetileMakananActivity.class);
         intent.putExtra("image_url", menuMakanan.getPhoto());

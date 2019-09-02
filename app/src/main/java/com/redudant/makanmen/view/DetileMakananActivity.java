@@ -17,6 +17,8 @@ public class DetileMakananActivity extends AppCompatActivity {
     private ImageView ivImageCover;
     private TextView tv_title, tv_submenu, tv_description;
 
+    private String title = "";
+
     private static final String TAG = "DetileMakananActivity";
 
     @Override
@@ -32,8 +34,7 @@ public class DetileMakananActivity extends AppCompatActivity {
         tv_description = (TextView) findViewById(R.id.tv_description);
 
         if (getIntent().hasExtra("image_url") && getIntent().hasExtra("title")
-                && getIntent().hasExtra("subtitle") && getIntent().hasExtra("description")
-                && getIntent().hasExtra("supportActionBar")) {
+                && getIntent().hasExtra("subtitle") && getIntent().hasExtra("description")) {
             String imageCover = getIntent().getStringExtra("image_url");
             String titleDesc = getIntent().getStringExtra("title");
             String subtitileDesc = getIntent().getStringExtra("subtitle");
@@ -48,7 +49,16 @@ public class DetileMakananActivity extends AppCompatActivity {
             tv_submenu.setText(subtitileDesc);
             tv_description.setText(descriptionDesc);
 
+            getSupportActionBar().setTitle(titleDesc);
+
         }
 
+    }
+
+    private void setActionbarTile(String title) {
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(title);
+        }
     }
 }
