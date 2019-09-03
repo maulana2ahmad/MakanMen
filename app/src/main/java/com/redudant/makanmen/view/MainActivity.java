@@ -51,6 +51,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void showRecyclerViewLit() {
 
+        //this is data horizontall
+        //rvMakananBetawi.setLayoutManager(new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false));
+
         rvMakananBetawi.setLayoutManager(new LinearLayoutManager(MainActivity.this));
         ListMakananBetawiAdapter listMakananBetawiAdapter = new ListMakananBetawiAdapter(listMakananBetawi);
         rvMakananBetawi.setAdapter(listMakananBetawiAdapter);
